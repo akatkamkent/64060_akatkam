@@ -1,0 +1,34 @@
+---
+title: "FML assignment 1"
+output: html_document
+date: "2023-09-10"
+---
+
+```{r}
+dataset_agi <- read.csv("C:/Users/Agast/OneDrive/Desktop/dataset_agi.csv")
+dataset_agi
+```
+```{r}
+library(fBasics)
+options(scipen=999)
+basicStats(data.frame(dataset_agi$Math.Score,dataset_agi$English.Score))
+```
+
+```{r}
+summary(dataset_agi)
+```
+
+```{r}
+library(caret)
+Model_range_normalized<-preProcess(dataset_agi,method = "range")
+dataset_agi_replica=predict(Model_range_normalized,dataset_agi)
+summary(dataset_agi_replica)
+```
+
+```{r}
+hist(dataset_agi$Math.Score )
+#Graphical representation is a histogram with the selected variable points
+x <- dataset_agi$Math.Score
+y <- dataset_agi$English.Score
+plot(x, y, main = "Scores", xlab = "Math Score", ylab = "English Score")
+```
